@@ -14,10 +14,10 @@ import java.util.List;
  *
  * Proporciona endpoints para ver historial/auditoría de cambios en stock.
  *
- * @RequestMapping("/movimientos"): URL base es /movimientos
+ * @RequestMapping("/movimiento"): URL base es /movimientos
  */
 @RestController
-@RequestMapping("/movimientos")
+@RequestMapping("/api/movimiento")
 @Slf4j
 @RequiredArgsConstructor
 public class MovimientoStockController {
