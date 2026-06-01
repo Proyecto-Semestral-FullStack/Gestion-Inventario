@@ -1,11 +1,13 @@
 package cl.dsy1103.ms_stock.controller;
 
+import cl.dsy1103.ms_stock.config.CatalogoClient;
 import cl.dsy1103.ms_stock.dto.AjustarStockDTO;
 import cl.dsy1103.ms_stock.dto.AumentarStockDTO;
 import cl.dsy1103.ms_stock.dto.DisminuirStockDTO;
 import cl.dsy1103.ms_stock.dto.StockCreateDTO;
 import cl.dsy1103.ms_stock.dto.StockResponseDTO;
-import cl.dsy1103.ms_stock.dto.StockUpdateDTO;
+import java.util.Map;
+import cl.dsy1103.ms_stock.exception.CatalogoException;
 import cl.dsy1103.ms_stock.service.StockService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,13 +31,12 @@ import java.util.List;
  * @RequiredArgsConstructor: Constructor automático para inyectar StockService
  */
 @RestController
-@RequestMapping("/stocks")
+@RequestMapping("/api/stock")
 @Slf4j
 @RequiredArgsConstructor
 public class StockController {
 
     private final StockService stockService;
-
     /* ====================================
        ENDPOINTS DE CONSULTA (GET)
        ==================================== */
@@ -362,4 +363,8 @@ public class StockController {
         );
         return ResponseEntity.ok(actualizado);
     }
+
+
+
+
 }
