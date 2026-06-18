@@ -60,8 +60,6 @@ public class StockResponseDTO {
                 .productoId(stock.getProductoId())
                 .cantidadDisponible(stock.getCantidadDisponible())
                 .stockMinimo(stock.getStockMinimo())
-                .fechaCreacion(stock.getFechaCreacion())
-                .fechaActualizacion(stock.getFechaActualizacion())
                 .build();
     }
 }

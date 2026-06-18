@@ -28,7 +28,7 @@ public interface MovimientoStockRepository extends JpaRepository<MovimientoStock
      *
      * Utilidad: ver historial de cambios de un producto
      */
-    List<MovimientoStock> findByStockIdOrderByFechaDesc(Long stockId);
+    //List<MovimientoStock> findByStockIdOrderByFechaDesc(Long stockId);
 
     /**
      * Obtener movimientos de un tipo específico.
@@ -57,12 +57,12 @@ public interface MovimientoStockRepository extends JpaRepository<MovimientoStock
      *
      * Utilidad: reportes mensuales, semanales
      */
-    List<MovimientoStock> findByStockIdAndFechaBetween(
+   /* List<MovimientoStock> findByStockIdAndFechaBetween(
             Long stockId,
             LocalDateTime fechaInicio,
             LocalDateTime fechaFin
     );
-
+**/
     /**
      * Contar cuántos movimientos del tipo SALIDA (ventas) hay para un stock.
      *

@@ -17,7 +17,7 @@ import java.util.List;
  * @RequestMapping("/movimientos"): URL base es /movimientos
  */
 @RestController
-@RequestMapping("/movimientos")
+@RequestMapping("/movimiento")
 @Slf4j
 @RequiredArgsConstructor
 public class MovimientoStockController {
@@ -103,7 +103,7 @@ public class MovimientoStockController {
     @GetMapping("/stock/{stockId}")
     public ResponseEntity<List<MovimientoStockResponseDTO>> listarPorStock(@PathVariable Long stockId) {
         log.info("GET /movimientos/stock/{} - Listando movimientos del stock", stockId);
-        List<MovimientoStockResponseDTO> movimientos = movimientoService.listarPorStockId(stockId);
+        List<MovimientoStockResponseDTO> movimientos = movimientoService.listarMovimientos();
         return ResponseEntity.ok(movimientos);
     }
 }

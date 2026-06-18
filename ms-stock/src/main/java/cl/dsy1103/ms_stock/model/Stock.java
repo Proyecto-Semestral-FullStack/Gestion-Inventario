@@ -5,22 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
-
-/**
- * Entidad que representa el Stock de un producto.
- *
+/** Entidad que representa el Stock de un producto.
  * Esta tabla almacena:
- * - Cantidad disponible de cada producto
- * - Stock mínimo (para alertas)
- * - Timestamps de creación y actualización
- *
+ * -Cantidad disponible de cada producto
+ * -Stock mínimo (para alertas)
+
  * Nota: NO almacenamos la información del producto aquí.
  *       Solo guardamos el ID del producto.
- *       La información (nombre, precio) viene de ms-catalogo mediante WebClient.
+ *       La información (nombre, precio) viene de ms-catalogo
  */
 @Entity
 @Table(name = "stock")  // Tabla en MySQL
@@ -37,7 +30,6 @@ public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     /**
      * ID del producto (referencia a ms-catalogo).
      *
@@ -62,19 +54,4 @@ public class Stock {
     @Column(name = "stock_minimo", nullable = false)
     private Integer stockMinimo;
 
-    /**
-     * Fecha de creación del registro.
-     * Se guarda automáticamente al insertar.
-     */
-    @CreationTimestamp
-    @Column(name = "fecha_creacion", updatable = false, nullable = false)
-    private LocalDateTime fechaCreacion;
-
-    /**
-     * Fecha de última actualización.
-     * Se actualiza automáticamente cada vez que cambios el registro.
-     */
-    @UpdateTimestamp
-    @Column(name = "fecha_actualizacion", nullable = false)
-    private LocalDateTime fechaActualizacion;
 }

@@ -40,7 +40,7 @@ public class MovimientoStockService {
      * @param stockId id del stock
      * @return lista de MovimientoStockResponseDTO
      */
-    public List<MovimientoStockResponseDTO> listarPorStockId(Long stockId) {
+/**    public List<MovimientoStockResponseDTO> listarPorStockId(Long stockId) {
         log.debug("Listando movimientos para stockId={}", stockId);
 
         if (!stockRepository.existsById(stockId)) {
@@ -50,5 +50,5 @@ public class MovimientoStockService {
         return movimientoRepository.findByStockIdOrderByFechaDesc(stockId).stream()
                 .map(MovimientoStockResponseDTO::from)
                 .collect(Collectors.toList());
-    }
+    } **/
 }

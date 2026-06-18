@@ -1,10 +1,8 @@
 package cl.dsy1103.ms_stock.service;
 
 import cl.dsy1103.ms_stock.config.CatalogoClient;
-import cl.dsy1103.ms_stock.dto.MovimientoStockResponseDTO;
 import cl.dsy1103.ms_stock.dto.StockCreateDTO;
 import cl.dsy1103.ms_stock.dto.StockResponseDTO;
-import cl.dsy1103.ms_stock.dto.StockUpdateDTO;
 import cl.dsy1103.ms_stock.exception.CatalogoException;
 import cl.dsy1103.ms_stock.exception.OperacionInvalidaException;
 import cl.dsy1103.ms_stock.exception.StockDuplicadoException;
@@ -152,7 +150,6 @@ public class StockService {
         // Actualizar cantidad
         int nuevaCantidad = stock.getCantidadDisponible() + cantidad;
         stock.setCantidadDisponible(nuevaCantidad);
-        stock.setFechaActualizacion(LocalDateTime.now()); // opcional, UpdateTimestamp lo hace automáticamente
 
         // Persistir stock (save actualiza)
         stockRepository.save(stock);
@@ -199,7 +196,6 @@ public class StockService {
 
         // Actualizar cantidad
         stock.setCantidadDisponible(disponible - cantidad);
-        stock.setFechaActualizacion(LocalDateTime.now());
         stockRepository.save(stock);
 
         // Registrar movimiento SALIDA
@@ -244,7 +240,6 @@ public class StockService {
 
         // Actualizar stock
         stock.setCantidadDisponible(nuevoValor);
-        stock.setFechaActualizacion(LocalDateTime.now());
         stockRepository.save(stock);
 
         // Registrar movimiento de ajuste. Guardamos la cantidad absoluta del cambio (o puedes guardar nuevo valor)

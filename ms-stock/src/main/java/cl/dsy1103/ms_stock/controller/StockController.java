@@ -29,7 +29,7 @@ import java.util.List;
  * @RequiredArgsConstructor: Constructor automático para inyectar StockService
  */
 @RestController
-@RequestMapping("/stocks")
+@RequestMapping("/api/stock")
 @Slf4j
 @RequiredArgsConstructor
 public class StockController {

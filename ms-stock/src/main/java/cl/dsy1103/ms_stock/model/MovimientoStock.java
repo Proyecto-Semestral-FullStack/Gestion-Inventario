@@ -32,9 +32,7 @@ import java.time.LocalDateTime;
 @Builder
 public class MovimientoStock {
 
-    /**
-     * ID único del movimiento.
-     */
+    /**ID único del movimiento.*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -48,27 +46,16 @@ public class MovimientoStock {
     @JoinColumn(name = "stock_id", nullable = false)
     private Stock stock;
 
-    /**
-     * Tipo de movimiento: ENTRADA, SALIDA, AJUSTE.
-     */
+    /***Tipo de movimiento: ENTRADA, SALIDA, AJUSTE.*/
     @Column(name = "tipo_movimiento", nullable = false)
     @Enumerated(EnumType.STRING)  // Guardar como texto en BD: "ENTRADA", "SALIDA"
     private TipoMovimiento tipoMovimiento;
 
     /**
      * Cantidad que se movió.
-     * Siempre positiva (el tipo indica si es entrada o salida).
-     */
+     * Siempre positiva (el tipo indica si es entrada o salida).*/
     @Column(name = "cantidad", nullable = false)
     private Integer cantidad;
-
-    /**
-     * Fecha del movimiento.
-     * Se guarda automáticamente.
-     */
-    @CreationTimestamp
-    @Column(name = "fecha", updatable = false, nullable = false)
-    private LocalDateTime fecha;
 
     /**
      * Observación opcional (motivo del movimiento).

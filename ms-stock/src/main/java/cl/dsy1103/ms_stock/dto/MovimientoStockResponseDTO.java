@@ -32,7 +32,6 @@ public class MovimientoStockResponseDTO {
     private Long stockId;
     private TipoMovimiento tipoMovimiento;
     private Integer cantidad;
-    private LocalDateTime fecha;
     private String observacion;
 
     /**
@@ -44,7 +43,6 @@ public class MovimientoStockResponseDTO {
                 .stockId(movimiento.getStock().getId())  // Stock ID del movimiento
                 .tipoMovimiento(movimiento.getTipoMovimiento())
                 .cantidad(movimiento.getCantidad())
-                .fecha(movimiento.getFecha())
                 .observacion(movimiento.getObservacion())
                 .build();
     }
