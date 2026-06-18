@@ -1,5 +1,6 @@
 package cl.dsy1103.ms_stock.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,18 +24,22 @@ import lombok.NoArgsConstructor;
  * - cantidadDisponible: obligatorio y >= 0 (puede ser 0)
  * - stockMinimo: obligatorio y >= 0
  */
+
+@Schema(description = "Datos para crear un nuevo stock")
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class StockCreateDTO {
-
     /**
      * ID del producto en ms-catalogo.
      *
      * @NotNull: No puede ser null
      * @Positive: Debe ser mayor a 0
      */
+
+    @Schema(description = "ID del producto en ms-Catalogo", example = "5", requiredMode = Schema.RequiredMode.REQUIRED)
     @NotNull(message = "El ID del producto es obligatorio")
     @Positive(message = "El ID del producto debe ser mayor a 0")
     private Long productoId;
@@ -45,6 +50,8 @@ public class StockCreateDTO {
      * @NotNull: Obligatorio
      * @PositiveOrZero: Puede ser 0 o más (no negativo)
      */
+
+    @Schema(description = "Cantidad disponible inicial", example = "100", requiredMode = Schema.RequiredMode.REQUIRED)
     @NotNull(message = "La cantidad disponible es obligatoria")
     @PositiveOrZero(message = "La cantidad disponible no puede ser negativa")
     private Integer cantidadDisponible;
@@ -56,6 +63,8 @@ public class StockCreateDTO {
      * @NotNull: Obligatorio
      * @PositiveOrZero: Puede ser 0 o más
      */
+
+    @Schema(description = "Stock mínimo recomendado", example = "10", requiredMode = Schema.RequiredMode.REQUIRED)
     @NotNull(message = "El stock mínimo es obligatorio")
     @PositiveOrZero(message = "El stock mínimo no puede ser negativo")
     private Integer stockMinimo;

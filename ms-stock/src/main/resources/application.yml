@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/db_inventario
     username: root
-    password: Contrasena123
+    password:
   jpa:
     hibernate:
       ddl-auto: update
@@ -22,3 +22,10 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 30
+
+springdoc:
+    api-docs:
+      enabled: true
+    swagger-ui:
+      enabled: true
+      path: /doc/swagger-ui.html

@@ -1,48 +1,32 @@
 package cl.dsy1103.ms_stock.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import cl.dsy1103.ms_stock.model.Stock;
 
-import java.time.LocalDateTime;
 
-/**
- * DTO para RESPONDER con datos de Stock.
- *
- * Este es el objeto que el servidor envía al cliente.
- *
- * Aquí incluimos:
- * - ID (generado por servidor)
- * - Datos del stock
- * - Fechas de auditoría
- *
- * NOT incluimos:
- * - Información del producto (eso lo pide el cliente a ms-catalogo)
- *
- * Ejemplo de response HTTP 200:
- * {
- *   "id": 1,
- *   "productoId": 5,
- *   "cantidadDisponible": 100,
- *   "stockMinimo": 10,
- *   "fechaCreacion": "2026-05-16T10:30:45.123",
- *   "fechaActualizacion": "2026-05-16T10:30:45.123"
- * }
- */
+@Schema(description = "Respuesta con datos del stock de un producto")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class StockResponseDTO {
 
+    @Schema(description = "ID único del stock", example = "1")
     private Long id;
+
+    @Schema(description = "ID del producto en ms-Catalogo", example = "5")
     private Long productoId;
+
+    @Schema(description = "Cantidad disponible en stock", example = "100")
     private Integer cantidadDisponible;
+
+    @Schema(description = "Cantidad mínima recomendada antes de reponer", example = "10")
     private Integer stockMinimo;
-    private LocalDateTime fechaCreacion;
-    private LocalDateTime fechaActualizacion;
+
 
     /**
      * Método HELPER para convertir una entidad Stock a DTO.
