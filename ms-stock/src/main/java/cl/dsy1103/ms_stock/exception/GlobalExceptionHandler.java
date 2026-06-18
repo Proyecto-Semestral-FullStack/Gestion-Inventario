@@ -1,6 +1,6 @@
 package cl.dsy1103.ms_stock.exception;
 
-import feign.FeignException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +45,28 @@ public class GlobalExceptionHandler {
      * Captura: StockNoEncontradoException
      * Código HTTP: 404 Not Found
      */
+
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNoResourceFound(
+            NoResourceFoundException ex,
+            WebRequest request
+    ) {
+        // Solo warn, no error — es normal que el browser busque favicon.ico etc.
+        log.warn("Recurso no encontrado: {}", ex.getMessage());
+
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                "Recurso no encontrado: " + ex.getMessage(),
+                LocalDateTime.now(),
+                request.getDescription(false).replace("uri=", "")
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(error);
+    }
+
     @ExceptionHandler(StockNoEncontradoException.class)
     public ResponseEntity<ErrorResponse> handleStockNoEncontrado(
             StockNoEncontradoException ex,
